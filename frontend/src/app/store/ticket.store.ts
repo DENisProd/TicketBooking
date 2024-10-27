@@ -12,6 +12,19 @@ interface Wagon {
     type: WagonTypes;
 }
 
+interface Seat {
+    seat_id: number;
+    seatNum: number;
+    block: number;
+    price: number;
+}
+
+export interface WagonInfo {
+    wagon_id: number;
+    type: string;
+    seats: Seat[];
+}
+
 interface Route {
     name: string;
     num: number;
@@ -37,10 +50,13 @@ interface TicketStore {
     date: Date;
     trains: Train[];
 
+    wagons: WagonInfo[];
+
     isLoading: boolean;
     error: string | null;
 
     fetchTrains: (fromCity: string, toCity: string, date: Date) => void;
+    fetchWagonInfo: (trainId: number) => void;
 }
 
 const useTicketStore = create<TicketStore>((set, get) => ({
@@ -48,6 +64,7 @@ const useTicketStore = create<TicketStore>((set, get) => ({
     to: "",
     date: new Date(),
     trains: [],
+    wagons: [],
 
     isLoading: false,
     error: null,
@@ -61,7 +78,6 @@ const useTicketStore = create<TicketStore>((set, get) => ({
                     params: { from: fromCity, to: toCity, date: date.getDate() },
                 })
                 .then((data) => {
-                    console.log(data.data?.data)
                     set({
                         from: fromCity,
                         to: toCity,
@@ -74,6 +90,16 @@ const useTicketStore = create<TicketStore>((set, get) => ({
         } catch (error) {
             console.error("Не удалось загрузить список поездов", error);
             set({ isLoading: false, error: "Ошибка при загрузке списка поездов" });
+        }
+    },
+    fetchWagonInfo: (trainId: number) => {
+        try {
+            axios.get<{ wagons: WagonInfo }>(`${SERVER_URL}tickets/wagons?trainId=${trainId}`)
+            .then(res => {
+                set({ wagons: res.data?.data as unknown as WagonInfo[] });
+            })
+        } catch (error) {
+            console.error("Error")
         }
     },
 }));

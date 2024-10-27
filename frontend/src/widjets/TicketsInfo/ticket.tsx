@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Button, Row, Col, Typography, Tag } from 'antd';
-import { Train } from './store';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import { Link } from 'react-router-dom';

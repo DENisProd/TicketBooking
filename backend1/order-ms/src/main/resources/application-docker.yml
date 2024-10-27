@@ -3,12 +3,12 @@ application:
 
 spring:
   rabbitmq:
-    host: 'localhost'
+    host: 'rabbitmq'
     port: 5672
     username: admin
     password: admin
   datasource:
-    url: jdbc:postgresql://localhost:5432/orders
+    url: jdbc:postgresql://postgres:5432/orders
     username: 'denis'
     password: 'password'
 
@@ -21,11 +21,8 @@ spring:
         format_sql: 'true'
     hibernate:
       ddl-auto: update
-#      ddl-auto: create-drop
+    #      ddl-auto: create-drop
     show-sql: false
 
 queue:
   name: cat_queue
-
-server:
-  port: 9010

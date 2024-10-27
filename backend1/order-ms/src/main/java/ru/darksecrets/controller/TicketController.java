@@ -24,4 +24,13 @@ public class TicketController {
 
         return ResponseEntity.ok(new ResponseDTO("ok", true, trains));
     }
+    @GetMapping("/wagons")
+    public ResponseEntity<ResponseDTO> getTrains(
+            @RequestParam("trainId") Integer trainId
+    ) {
+        var wagons = ticketService.getWagonInfo(trainId);
+
+        return ResponseEntity.ok(new ResponseDTO("ok", true, wagons));
+    }
+
 }

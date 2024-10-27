@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import ru.darksecrets.dto.TrainInfoDTO;
 import ru.darksecrets.dto.TrainInfoResponseDTO;
+import ru.darksecrets.dto.WagonWithSeatsDTO;
+import ru.darksecrets.dto.WagonWithSeatsInfoDTO;
 
 import java.util.List;
 
@@ -19,7 +21,6 @@ public class TicketService {
         RestTemplate restTemplate = new RestTemplate();
         String resourceUrl = apiUrl + "/info/trains?start_point=" + fromCity + "&end_point=" + toCity + "&booking_available=true";
 
-        // Используем ParameterizedTypeReference для указания типа возвращаемого списка
         ResponseEntity<TrainInfoResponseDTO> response = restTemplate.getForEntity(
                 resourceUrl,
                 TrainInfoResponseDTO.class
@@ -27,6 +28,22 @@ public class TicketService {
 
         if (response.getStatusCode().is2xxSuccessful()) {
             return response.getBody().getTrains();
+        } else {
+            throw new RuntimeException("Failed to fetch train information from API");
+        }
+    }
+
+    public List<WagonWithSeatsDTO> getWagonInfo(Integer trainId) {
+        RestTemplate restTemplate = new RestTemplate();
+        String resourceUrl = apiUrl + "/info/wagons?trainId=" + trainId;
+
+        ResponseEntity<WagonWithSeatsInfoDTO> response = restTemplate.getForEntity(
+                resourceUrl,
+                WagonWithSeatsInfoDTO.class
+        );
+
+        if (response.getStatusCode().is2xxSuccessful()) {
+            return response.getBody().getWagons();
         } else {
             throw new RuntimeException("Failed to fetch train information from API");
         }

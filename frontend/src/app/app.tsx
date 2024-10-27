@@ -7,6 +7,7 @@ import { useKeycloak } from "@react-keycloak/web";
 import MainLayout from "../layouts/MainLayout";
 import "./app.scss";
 import IndexPage from "../pages/WelcomePage";
+import TrainView from "../pages/TrainView/TrainView";
 
 function App() {
   const { keycloak } = useKeycloak();
@@ -39,6 +40,12 @@ function App() {
             <PrivateRoute>
               <SecuredPage />
             </PrivateRoute>
+          }
+        />
+        <Route
+          path="/train/:trainId"
+          element={
+            <TrainView />
           }
         />
       </Routes>

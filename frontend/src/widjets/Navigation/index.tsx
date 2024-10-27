@@ -20,18 +20,18 @@ const Navigation = () => {
           <Logo />
         </Typography>
         <Flex gap="small" align="center">
-          <Link to={""}>Home</Link>
-          <Link to={"secured"}>Secured</Link>
+          {/* <Link to={""}>Главная </Link> */}
+          {/* <Link to={"secured"}>Secured</Link> */}
 
           {!keycloak.authenticated && (
             <Button type="primary" onClick={() => keycloak.login()}>
-              Login
+              Войти
             </Button>
           )}
 
           {!!keycloak.authenticated && (
             <Button type="default" onClick={() => keycloak.logout()}>
-              Logout (
+              Выйти (
               {keycloak.tokenParsed && keycloak.tokenParsed.preferred_username})
             </Button>
           )}
