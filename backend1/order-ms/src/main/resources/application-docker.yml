@@ -26,3 +26,6 @@ spring:
 
 queue:
   name: cat_queue
+
+server:
+  port: 8081
