@@ -1,0 +1,157 @@
+@import "../shared/variables.scss";
+
+html {
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  width: 0;
+}
+/* Reset and base styles  */
+* {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Links */
+
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+  font-weight: 400;
+  color: $color-action;
+  text-decoration: inherit;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Common */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul,
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+img {
+  max-width: 100%;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Form */
+
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+
+input[type="radio"] {
+  display: none;
+}
+label:hover {
+  cursor: pointer;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button,
+input[type="submit"] {
+  display: inline-block;
+  box-shadow: none;
+  background-color: transparent;
+  background: none;
+  cursor: pointer;
+}
+
+input:focus,
+input:active,
+button:focus,
+button:active {
+  outline: none;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  display: block;
+}
+
+body {
+  font-family: "Golos Text", sans-serif;
+  font-weight: 400;
+  min-width: 320px;
+  width: 100vw;
+  min-height: 100vh;
+  color: $color-font-active;
+  background-color: #f7f7fc;
+
+  #root {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    :where(.css-dev-only-do-not-override-ni1kz0).ant-app {
+      width: 100%;
+    }
+    .wrapper {
+      max-width: 1320px;
+      padding: 0 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    main {
+      display: flex;
+      justify-content: center;
+      .wrapper {
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1321px) {
+  body {
+    overflow: hidden;
+  }
+}

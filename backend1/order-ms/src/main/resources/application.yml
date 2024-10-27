@@ -1,0 +1,28 @@
+application:
+  api_url: http://localhost:3001
+
+spring:
+  rabbitmq:
+    host: 'localhost'
+    port: 5672
+    username: admin
+    password: admin
+  datasource:
+    url: jdbc:postgresql://localhost:5432/orders
+    username: 'denis'
+    password: 'password'
+
+    hikari:
+      auto-commit: false
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: update
+#      ddl-auto: create-drop
+    show-sql: false
+
+queue:
+  name: cat_queue
