@@ -105,6 +105,7 @@ services:
     networks:
       - postgres
       - spring
+      - host
     depends_on:
       - postgres
       - rabbitmq
