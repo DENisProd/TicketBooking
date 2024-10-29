@@ -4,6 +4,7 @@ server:
 application:
   api_url: http://localhost:3000
 
+
 spring:
   rabbitmq:
     host: 'localhost'

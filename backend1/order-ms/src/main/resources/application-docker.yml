@@ -4,6 +4,7 @@ server:
 application:
   api_url: http://host.docker.internal:3001
 
+
 spring:
   rabbitmq:
     host: 'rabbitmq'
