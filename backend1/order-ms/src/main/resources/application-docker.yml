@@ -1,5 +1,8 @@
+server:
+  port: 8081
+
 application:
-  api_url: http://localhost:3001
+  api_url: http://193.160.208.142:3001
 
 spring:
   rabbitmq:
@@ -26,6 +29,3 @@ spring:
 
 queue:
   name: cat_queue
-
-server:
-  port: 8081
