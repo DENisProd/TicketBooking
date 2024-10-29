@@ -105,7 +105,8 @@ services:
     networks:
       - postgres
       - spring
-      - host
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       - postgres
       - rabbitmq
