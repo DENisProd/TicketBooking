@@ -99,7 +99,7 @@ services:
     image: denisproduction/order-ms:latest
     container_name: order-ms
     ports:
-      - "9010:9010"
+      - "9091:8081"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     networks:
